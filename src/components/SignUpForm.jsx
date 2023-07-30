@@ -4,6 +4,7 @@ export default function SignUpForm({ setToken }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [user, setUser] = useState(null);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -23,8 +24,8 @@ export default function SignUpForm({ setToken }) {
         }
       );
       const result = await response.json();
-      console.log(result);
       setToken(result.token);
+      setUser(true);
     } catch (error) {
       setError(error.message);
     }
@@ -59,6 +60,7 @@ export default function SignUpForm({ setToken }) {
         </label>
         <button>Submit</button>
       </form>
+      {user && <p>User has been created!</p>}
     </>
   );
 }
