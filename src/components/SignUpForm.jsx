@@ -33,12 +33,13 @@ export default function SignUpForm({ setToken }) {
     <>
       <h2>Sign Up</h2>
       {error && <p>{error.message}</p>}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} id="signUpForm">
         <label>
           Username:{" "}
           <input
             type="username"
             value={username}
+            minLength={5}
             onChange={(e) => {
               setUsername(e.target.value);
             }}
@@ -49,6 +50,8 @@ export default function SignUpForm({ setToken }) {
           <input
             type="password"
             value={password}
+            minLength={6}
+            required
             onChange={(e) => {
               setPassword(e.target.value);
             }}

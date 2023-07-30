@@ -67,3 +67,30 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* styling by me */
+h2 {
+  border-bottom: 1px solid white;
+}
+#signUpForm {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+}
+
+label {
+  padding-bottom: 8px;
+  text-align: right;
+}
+
+#errorMsg {
+  border: 1px solid red;
+}
+
+#green {
+  border: 1px solid green;
+}
+
+#red {
+  border: 1px solid red;
+}

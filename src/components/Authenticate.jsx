@@ -3,7 +3,8 @@ import { useState } from "react";
 export default function Authenticate({ token }) {
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState(null);
+  const [colorCode, setColorCode] = useState("");
 
   async function handleClick() {
     try {
@@ -18,9 +19,14 @@ export default function Authenticate({ token }) {
         }
       );
       const result = await response.json();
-      console.log(result);
       setSuccessMessage(result.message);
-      setUsername(result.data.username);
+      if (result.data) {
+        setUsername(result.data.username);
+        setColorCode("green");
+      } else {
+        setUsername("No user exists");
+        setColorCode("red");
+      }
     } catch (error) {
       setError(error.message);
     }
@@ -28,9 +34,9 @@ export default function Authenticate({ token }) {
   return (
     <>
       <h2>Authenticate</h2>
-      {error && <p>{error}</p>}
+      {error && <p id="errorMsg">{error}</p>}
       {successMessage && (
-        <p>
+        <p id={colorCode} className="successMsg">
           {successMessage}
           <br />
           Username: {username}
