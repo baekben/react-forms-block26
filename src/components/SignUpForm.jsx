@@ -40,6 +40,7 @@ export default function SignUpForm({ setToken }) {
             type="username"
             value={username}
             minLength={6}
+            placeholder="min. 6 characters"
             required
             onChange={(e) => {
               setUsername(e.target.value);
@@ -52,6 +53,7 @@ export default function SignUpForm({ setToken }) {
             type="password"
             value={password}
             minLength={6}
+            placeholder="min. 6 characters"
             required
             onChange={(e) => {
               setPassword(e.target.value);
